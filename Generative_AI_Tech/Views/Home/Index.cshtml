@@ -1,8 +1,128 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<section class="hero-section">
+    <div class="video-container">
+        <video playsinline autoplay muted loop poster="cake.jpg">
+            <source src="~/video/AI-Bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="hero-heading text-center d-flex flex-column justify-content-center align-items-center">
+        <h1 class="hero-gradient mb-4">Generative AI Technology</h1>
+        <p class="w-75 fs-5 mt-4">
+            Any time an AI technology is generating something on its own, it can be referred to as
+            "generative AI." This umbrella term includes learning algorithms that make predictions
+            as well as those that can use prompts to autonomously write articles and paint pictures.
+            <br />
+            Techopedia
+        </p>
+    </div>
+</section>
+<section class="gen-ai-section">
+    <div class="gen-ai-content">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <h2>GenAI Tools</h2>
+                <p>
+                    Generative AI tools refer to software or systems that use neural network techniques to
+                    process and comprehend input data, subsequently producing meaningful responses.
+                    Scribehow
+                </p>
+            </div>
+            <div class="col-lg-6 col-sm-12 d-flex justify-content-evenly">
+                <img height="550" width="900" src="~/img/google-bard.jpg" alt="Google Bard" />
+                <img height="300" width="300" src="~/img/midjourney.webp" alt="MidJourney" />
+            </div>
+        </div>
+    </div>
+    <div class="gen-ai-content">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 d-flex justify-content-evenly">
+                <img height="277" width="899" src="~/img/microsoft-logo.png" alt="Microsoft" />
+                <img height="300" width="300" src="~/img/google-logo.png" alt="Google" />
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <h2>GenAI Organizations</h2>
+                <p>
+                    Generative AI Organizations like Microsoft, Google, Amazon and IBM have invested
+                    hundreds of millions of dollars and massive compute power to build the foundational
+                    models on which services like ChatGPT and others depend.
+                    Gartner
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="gen-ai-content">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <h2>GenAI Applications</h2>
+                <p>
+                    Text: GPT-3, LaMDA, LLaMA, BLOOM and GPT-4. <br />
+                    Code: OpenAI Codex.<br />
+                    Images: DALL-E, Midjourney and Stable Diffusion.<br />
+                    Video: Make-A-Video (Meta Platforms).<br />
+                    Wikipedia
+                </p>
+            </div>
+            <div class="col-lg-6 col-sm-12 d-flex justify-content-evenly">
+                <img height="277" width="899" src="~/img/chatgpt.jpeg" alt="chat gpt" />
+                <img height="300" width="300" src="~/img/Dall.png" alt="Dall-e" />
+            </div>
+        </div>
+    </div>
+    <div class="gen-ai-content">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 d-flex justify-content-evenly">
+                <img height="277" width="899" src="~/img/microsoft-logo.png" alt="Microsoft" />
+                <img height="300" width="300" src="~/img/google-logo.png" alt="Google" />
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <h2>AI Jobs</h2>
+                <p>
+                    The prime source for jobs and talents in AI, ML, Data Science and Big Data: Insights AIJobs
+                    Python source for tables and charts: Kaggle.<br />
+                    Link for Insights AI-Jobs: <a href="https://ai-jobs.net/">https://ai-jobs.net/</a> <br />
+                    Link for Kaggle: <a href="https://www.kaggle.com/code/sowrabhghosh/data-science-salary-2020-22-analysis">https://www.kaggle.com/code/sowrabhghosh/data-science-salary-2020-22-analysis</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div class="text-center">
-    <h1 class="hero-gradient">Generative AI Technology</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+@section Scripts{
+<script>
+        // Function to check if an element is in the viewport
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+       // Function to handle the visibility of the GenAI section
+    function handleGenAiVisibility() {
+        const genAiSection = document.querySelectorAll('.gen-ai-content');
+        genAiSection.forEach(element=>{
+        if (isElementInViewport(element)) {
+            element.classList.add('in-viewport');
+        }else {
+            element.classList.remove('in-viewport');
+        }
+        });
+    }
+
+    // Attach a scroll event listener to check when the GenAI section enters the viewport
+    window.addEventListener('scroll', handleGenAiVisibility);
+    window.addEventListener('resize', handleGenAiVisibility);
+
+    // Initial check in case the section is already in the viewport on page load
+    handleGenAiVisibility();
+
+
+</script>
+}

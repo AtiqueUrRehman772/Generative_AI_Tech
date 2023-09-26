@@ -17,10 +17,126 @@ body {
     margin-bottom: 60px;
 }
 
+/* Apply styles to the hero section */
+.hero-section {
+    position: relative; /* Ensure relative positioning */
+    height: 100vh; /* Set the height to 100% of the viewport height */
+    overflow: hidden; /* Hide overflowing content */
+}
+
+/* Create a container for the video */
+.video-container {
+    position: absolute; /* Position the video container absolutely */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place the video container behind other content */
+    filter: brightness(60%);
+}
+
+/* Style the video to cover the entire container */
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the video covers the entire container */
+}
+
+/* Style the text content in the hero section */
+.text-center {
+    position: relative; /* Ensure relative positioning for text */
+    z-index: 1; /* Place text content above the video */
+    text-align: center;
+    color: #ffffff; /* Text color (adjust as needed) */
+}
+
+/* Additional styling for the hero text */
 .hero-gradient {
-    font-size: 72px;
-    background: linear-gradient(to right,#b30000,#d54206,#f9c80c,#ffffff,#f9c80c,#ff1111, #ab0808);
+    background: linear-gradient(to right, #ff00ff, #0000ff); /* Example gradient background */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Hide text color (will appear as the gradient) */
+}
+
+.hero-heading {
+    min-height: 75vh;
+    height: 100%;
+}
+
+    .hero-heading p {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2vw;
+        text-align: center;
+    }
+
+.hero-gradient {
+    font-family: 'Anton', sansserif;
+    background-image: linear-gradient(to right, brown, brown, yellow, white, yellow, brown, brown);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: brown;
+    padding: 2vw 2vw 0vw 2vw;
+    text-align: center;
+    font-size: 8vw;
+    /* background: linear-gradient(to right,#b30000,#d54206,#f9c80c,#ffffff,#f9c80c,#ff1111, #ab0808);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;*/
     text-transform: uppercase;
 }
+
+.gen-ai-section {
+    background-image: url(../img/bg-image.jpg);
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: contain;
+    min-height: 70vh;
+    padding-bottom: 2rem;
+    position: relative;
+}
+    /* Apply a backdrop-filter to blur the background */
+    .gen-ai-section::before {
+        content: ""; /* Create a pseudo-element to cover the background */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(2px); /* Adjust the blur value as needed */
+        z-index: 1; /* Place it behind the content */
+    }
+.gen-ai-content a {
+    color: #fff
+}
+.gen-ai-content {
+    opacity: 0; /* Initially, hide the section */
+    transition: opacity 0.5s ease; /* Add a transition effect for smooth visibility */
+    width: 85%;
+    margin: auto;
+    padding: 5vw 2.5rem;
+    border-bottom: 2px solid #ffb600aa;
+    z-index:100;
+    position:relative;
+}
+
+    .gen-ai-content h2 {
+        font-size: 4vw;
+        color: #ffb600;
+        font-family: 'Anton', sansserif;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgb(192 173 239 / 50%);
+    }
+    .gen-ai-content p {
+        color: #fff;
+        text-align:justify;
+    }
+    .gen-ai-content img {
+        height:175px;
+        width:200px;
+        background-color:#fff;
+    }
+
+    /* Make the GenAI section visible when it's in the viewport */
+    .gen-ai-content.in-viewport {
+        opacity: 1;
+    }
