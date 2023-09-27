@@ -1,6 +1,116 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "GenAI";
 }
-<h4>Gen AI Page</h4>
+@if (Model.type == "tools")
+{
+    <section class="gen-ai-main gen-ai-main-tools">
+        <h1 class="w-100 text-center mb-5 pt-5">GenAI Tools</h1>
+        <div class="w-lg-75 w-sm-100 d-flex justify-content-center">
+            <div class="img-cont">
+                <div class="img-btns">
+                    <h4 class="text-center pb-2 mb-2">CHAT GPT</h4>
+                    <button onclick="changeTools('Chat Gpt',`ChatGPT is a large language model-based chatbot developed by OpenAI and launched on
+November 30, 2022, notable for enabling users to refine and steer a conversation towards
+a desired length, format, style, level of detail, and language used. (Wikipedia)
+`,'/img/chatgpt-details.png','/img/chatgpt.jpeg')">More Details</button>
+                </div>
+                <img class="logo-img" src="~/img/chatgpt.jpeg" alt="Chat Gpt" />
+            </div>
+            <div class="img-cont">
+                <div class="img-btns">
+                    <h4 class="text-center pb-2 mb-2">GOOGLE BARD</h4>
+                    <button onclick="changeTools('Google Bard',`Bard is a conversational generative artificial intelligence chatbot developed by Google,
+based initially on the LaMDA family of large language models and later the PaLM LLM.(Wikipedia)
+`,'/img/google-bard-details.png','/img/google-bard.jpg')">More Details</button>
+                </div>
+                <img class="logo-img" src="~/img/google-bard.jpg" alt="Google Bard" />
+            </div>
+            <div class="img-cont">
+                <div class="img-btns">
+                    <h4 class="text-center pb-2 mb-2">MID JOURNEY</h4>
+                    <button onclick="changeTools('Mid Journey',`Midjourney is a generative artificial intelligence program and service created and
+hosted by San Francisco-based independent research lab Midjourney, Inc. (Wikipedia)`,'/img/Midjourney-details.png','/img/midjourney.webp')">More Details</button>
+                </div>
+                <img class="logo-img" src="~/img/midjourney.webp" alt="Midourney" />
+            </div>
+            <div class="img-cont">
+                <div class="img-btns">
+                    <h4 class="text-center pb-2 mb-2">DALL-E</h4>
+                    <button onclick="changeTools('DALL-E',`DALL-E and DALL-E 2 are text-to-image models developed by OpenAI using deep learning
+methodologies to generate digital images from natural language descriptions, called prompts (Wikipedia)
+`,'/img/dall-details.png','/img/Dall.png')">More Details</button>
+                </div>
+                <img class="logo-img" src="~/img/Dall.png" alt="Dall-E" />
+            </div>
+        </div>
+        <div class="details-card" id="details-card">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                    <img id="tools-detail-image" src="" alt="detail" />
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <h3 id="tools-details-heading"></h3>
+                    <button>More Details</button>
+                    <p id="tools-details-dt"></p>
+                    <div class="tool-logo-container">
+                        <a href="#">Visit Website</a>
+                        <div>
+                            <img id="tools-logo" src="" alt="Midjourney Logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (Model.type == "organizations")
+{
+    <section class="gen-ai-main gen-ai-main-organizations">
+        <h1 class="w-100 text-center mb-5 pt-5">GenAI Organizations</h1>
+        <div class="w-lg-75 w-sm-100 d-flex justify-content-center">
+            <div class="img-cont">
+                <div class="img-btns">
+                    <h4 class="text-center pb-2 mb-2">MICROSOFT</h4>
+                    <button>More Details</button>
+                </div>
+                <img class="logo-img" src="~/img/Microsoft-logo-dark.jpeg" alt="Microsoft Logo" />
+            </div>
+            <div class="img-cont">
+                <div class="img-btns">
+                    <h4 class="text-center pb-2 mb-2">GOOGLE</h4>
+                    <button>More Details</button>
+                </div>
+                <img class="logo-img" src="~/img/google-logo-dark.jpg" alt="Google Logo" />
+            </div>
+            <div class="img-cont">
+                <div class="img-btns">
+                    <h4 class="text-center pb-2 mb-2">IBM</h4>
+                    <button>More Details</button>
+                </div>
+                <img class="logo-img" src="~/img/IBM-Logo.svg" alt="IBM Logo" />
+            </div>
+            <div class="img-cont">
+                <div class="img-btns">
+                    <h4 class="text-center pb-2 mb-2">Amazon</h4>
+                    <button>More Details</button>
+                </div>
+                <img class="logo-img" src="~/img/Amazon-Logo-dark.webp" alt="Amazon Logo" />
+            </div>
+        </div>
+    </section>
+}
+
+@section Scripts{
+    <script>
+        $(document).ready(()=>{
+            $('#details-card').hide();
+        });
+        function changeTools(heading,details,img,logo){
+            $('#tools-details-heading').html(heading);
+            $('#tools-details-dt').html(details);
+            $('#tools-logo').attr('src',logo);
+            $('#tools-detail-image').attr('src',img);
+            $('#details-card').show();
+        }
+    </script>
+}

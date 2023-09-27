@@ -16,6 +16,27 @@ p{
     font-size:1.5vw
 }
 
+::-webkit-scrollbar {
+    display:none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    display: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        display: none;
+    }
+
+
+
 /* Apply styles to the hero section */
 .hero-section {
     position: relative; /* Ensure relative positioning */
@@ -99,6 +120,7 @@ video {
     border-radius:5px;
     color:#fff;
     padding:3px;
+    text-decoration:none;
 }
 .gen-ai-joblist {
     background-image: url(../img/bg-image.jpg);
@@ -164,7 +186,127 @@ video {
 
 
 
+footer .row {
+    margin-left:0% !important;
+    margin-right:0% !important;
+}
     footer a{
         color:#fff !important;
         text-decoration:none;
+    }
+
+
+
+    /*GenAI Page Styles*/
+.gen-ai-main-tools {
+    background-image: url(../img/GenAIBg.jpg);
+}
+.gen-ai-main-organizations {
+    background-image: url(../img/GenAIOrgBg.jpg);
+}
+.gen-ai-main{
+    background-repeat:no-repeat;
+    background-size:cover;
+    min-height:120vh;
+    padding-bottom:2rem;
+}
+.gen-ai-main h1 {
+        font-family: 'Anton', sansserif;
+        background-image: linear-gradient(to right, brown, brown, yellow, white, yellow, brown, brown);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: brown;
+        padding: 2vw 2vw 0vw 2vw;
+        text-align: center;
+        font-size: 8vw;
+    }
+.gen-ai-main .img-cont {
+        margin: 3px;
+    }
+.gen-ai-main .img-cont img{
+        width: 175px;
+        height: 175px;
+        background-color:#fff;
+    }
+.img-btns {
+    opacity:0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    position: absolute;
+    top: 286px;
+    height: 175px;
+    width: 175px;
+    background: #000000cc;
+    transition:500ms ease-in-out;
+}
+.img-btns:hover {
+        opacity:1;
+    }
+.img-btns h4{
+    width:100%;
+    border-bottom:2px solid goldenrod;
+}
+.img-btns button{
+    background:dodgerblue;
+    border:none;
+    color:#fff;
+    border-radius:5px;
+    padding:0.25rem 0.75rem;
+}
+
+/* GenAI Page Details Card Styles*/
+.details-card{
+    margin-top:4rem;
+    background-color:#2c2c2c;
+    min-height:500px;
+    width:90%;
+    margin:2rem auto auto auto;
+    padding:4rem;
+}
+    .details-card h3 {
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #68589b99;
+        color: #ffe000;
+        font-weight: bold;
+        border-bottom: 2px solid #ffe000cc;
+        padding-bottom:2px;
+        text-transform:uppercase;
+    }
+.details-card button{
+    background-color:dodgerblue;
+    color:#fff;
+    border-radius:2px;
+    padding:0.5rem 1rem;
+    border:none;
+    outline:none;
+    margin-bottom:1rem;
+}
+.details-card p{
+    color:#acacac;
+}
+.tool-logo-container{
+    margin-top:3rem;
+}
+    .tool-logo-container a {
+        background-color: #3d3d3d;
+        color: #acacac;
+        border-radius: 2px;
+        padding: 0.5rem 1rem;
+        border: none;
+        outline: none;
+        margin-bottom: 1rem;
+    }
+    .tool-logo-container div {
+        width: 100%;
+        border-radius:3px;
+        margin-top: 1rem;
+        background-color: #3c3c3c;
+        padding:1rem;
+    }
+    .tool-logo-container img {
+        height:175px;
+        width:auto;
     }

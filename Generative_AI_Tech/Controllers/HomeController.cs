@@ -33,9 +33,12 @@ namespace Generative_AI_Tech.Controllers
 
         //////// New Added Pages  ////////
 
-        public IActionResult GenAI()
+        public IActionResult GenAI(string type)
         {
-            return View();
+            return View(new GenAIViewModel
+            {
+                type = type
+            });
         }
     }
 }
