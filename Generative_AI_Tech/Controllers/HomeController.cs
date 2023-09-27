@@ -28,5 +28,14 @@ namespace Generative_AI_Tech.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+
+        //////// New Added Pages  ////////
+
+        public IActionResult GenAI()
+        {
+            return View();
+        }
     }
 }

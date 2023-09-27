@@ -12,9 +12,8 @@ html {
     position: relative;
     min-height: 100%;
 }
-
-body {
-    margin-bottom: 60px;
+p{
+    font-size:1.5vw
 }
 
 /* Apply styles to the hero section */
@@ -94,6 +93,25 @@ video {
     padding-bottom: 2rem;
     position: relative;
 }
+.readmore-btn{
+    background:transparent;
+    border:1px solid #fffc;
+    border-radius:5px;
+    color:#fff;
+    padding:3px;
+}
+.gen-ai-joblist {
+    background-image: url(../img/bg-image.jpg);
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: cover;
+    min-height: 70vh;
+    padding-bottom: 2rem;
+    position: relative;
+}
+    .gen-ai-joblist .gen-ai-content {
+        opacity:1 !important;
+    }
     /* Apply a backdrop-filter to blur the background */
     .gen-ai-section::before {
         content: ""; /* Create a pseudo-element to cover the background */
@@ -115,6 +133,7 @@ video {
     margin: auto;
     padding: 5vw 2.5rem;
     border-bottom: 2px solid #ffb600aa;
+    border-top: 2px solid #ffb600aa;
     z-index:100;
     position:relative;
 }
@@ -139,4 +158,13 @@ video {
     /* Make the GenAI section visible when it's in the viewport */
     .gen-ai-content.in-viewport {
         opacity: 1;
+    }
+
+
+
+
+
+    footer a{
+        color:#fff !important;
+        text-decoration:none;
     }
