@@ -16,24 +16,27 @@ p{
     font-size:1.5vw
 }
 
-::-webkit-scrollbar {
+/*This code hides the scollbars -- if required, un-comment following lines*/
+
+
+/*::-webkit-scrollbar {
     display:none;
-}
+}*/
 
 /* Track */
-::-webkit-scrollbar-track {
+/*::-webkit-scrollbar-track {
     display: none;
-}
+}*/
 
 /* Handle */
-::-webkit-scrollbar-thumb {
+/*::-webkit-scrollbar-thumb {
     display: none;
-}
+}*/
 
     /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
+    /*::-webkit-scrollbar-thumb:hover {
         display: none;
-    }
+    }*/
 
 
 
@@ -330,7 +333,71 @@ py-script img{
     background-repeat: no-repeat;
     background-size: cover;
 }
+.jobs-parallax h1 {
+    font-family: 'Anton', sansserif;
+    background-image: linear-gradient(to right, brown, brown, yellow, white, yellow, brown, brown);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: brown;
+    padding: 2vw 2vw 0vw 2vw;
+    text-align: center;
+    font-size: 8vw;
+}
 #pyscript-operation-details *{
     font-size:14pt;
     color:#fff;
+}
+tbody, td, tfoot, th, thead, tr {
+    border-width: 1px !important;
+}
+    /*pyscript table styles*/
+    #table table thead th {
+    background-color: navy;
+    color:yellow;
+    text-align: center;
+}
+#table table {
+    width: 100%;
+    overflow-x: auto;
+    font-size: .875em;
+    --bs-table-bg: #fff;
+    --bs-table-accent-bg: #fff;
+    --bs-table-striped-color: #212529;
+    --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+    --bs-table-active-color: #212529;
+    --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+    --bs-table-hover-color: #212529;
+    --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    vertical-align: top;
+    border-color: #dee2e6;
+    caption-side: bottom;
+    border-collapse: collapse;
+}
+#table table>thead {
+    vertical-align: bottom;
+}
+#table table > tbody {
+    vertical-align: inherit;
+}
+#table table > tbody > tr:nth-of-type(odd) {
+    --bs-table-accent-bg: var(--bs-table-striped-bg);
+    color: var(--bs-table-striped-color);
+}
+#table table tbody td:nth-child(1) {
+    background-color: navy;
+    color: yellow;
+    text-align: center;
+}
+#table table > :not(caption) > * > * {
+    padding: 0.5rem 0.5rem;
+    background-color: var(--bs-table-bg);
+    border-bottom-width: 1px;
+}
+.ps-card {
+    background-color: #1d1db796;
+    padding: 1vw
 }
