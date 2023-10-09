@@ -323,7 +323,6 @@ py-script img{
 .jobs-parallax {
     /* The image used */
     background-image: url('/img/background/bg1.jpg');
-    /* Full height */
     height: 100%;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
