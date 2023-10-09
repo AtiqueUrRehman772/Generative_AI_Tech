@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic.FileIO;
 using Newtonsoft.Json;
 using OfficeOpenXml;
+using System.Data.SqlClient;
 using System.Diagnostics;
 
 namespace Generative_AI_Tech.Controllers
@@ -166,6 +167,35 @@ namespace Generative_AI_Tech.Controllers
                 throw;
             }
 
+        public IActionResult login()
+        {
+            return View();
+        }
+        public IActionResult register()
+        {
+            return View();
+        }
+        public IActionResult loginUser(string email, string password)
+        {
+            SqlConnection con = new SqlConnection("connection");
+            con.Open();
+            string query = "select * from user where email='" + email + "' and password='" + password + "'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("login");
+        }
+        public IActionResult registerUser(string name, string email, string password)
+        {
+            SqlConnection con = new SqlConnection("connection");
+            con.Open();
+            string query = "insert into uservalues('" + name + "'," + email + "','" + password + "')";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.ExecuteNonQuery();
+            return RedirectToAction("Index");
         }
     }
 
