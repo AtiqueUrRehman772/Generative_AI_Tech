@@ -106,7 +106,7 @@ video {
 }
 
 .gen-ai-section {
-    background-image: url(../img/bg-image.jpg);
+    background-image: url(../img/background/bg2.jpg);
     background-position: center;
     background-repeat: repeat-y;
     background-size: contain;
@@ -123,7 +123,7 @@ video {
     text-decoration:none;
 }
 .gen-ai-joblist {
-    background-image: url(../img/bg-image.jpg);
+    background-image: url(../img/background/bg2.jpg);
     background-position: center;
     background-repeat: repeat-y;
     background-size: cover;
@@ -199,10 +199,13 @@ footer .row {
 
     /*GenAI Page Styles*/
 .gen-ai-main-tools {
-    background-image: url(../img/GenAIBg.jpg);
+    background-image: url(../img/background/bg5.jpg);
 }
 .gen-ai-main-organizations {
-    background-image: url(../img/GenAIOrgBg.jpg);
+    background-image: url(../img/background/bg6.jpg);
+}
+.gen-ai-main-applications {
+    background-image: url(../img/background/bg7.jpg);
 }
 .gen-ai-main{
     background-repeat:no-repeat;
@@ -310,3 +313,25 @@ footer .row {
         height:175px;
         width:auto;
     }
+py-script img{
+    padding:5px;
+    background-color:#fff;
+    margin:2px;
+    max-width:450px;
+}
+/*Jobs Parallax*/
+.jobs-parallax {
+    /* The image used */
+    background-image: url('/img/background/bg1.jpg');
+    /* Full height */
+    height: 100%;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#pyscript-operation-details *{
+    font-size:14pt;
+    color:#fff;
+}

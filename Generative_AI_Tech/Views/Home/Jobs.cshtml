@@ -1,0 +1,255 @@
+﻿@using System.Diagnostics;
+@using Newtonsoft.Json
+
+<section class="jobs-parallax">
+<h1>Jobs</h1>
+
+
+
+<py-config>
+    packages = ["matplotlib", "pandas", "numpy"]
+</py-config>
+
+
+    <!-- Here is the code for the sidebar -->
+    <div class="container-fluid">
+      <div class="row">
+    
+        <!-- Here is the code for the dashboard -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div class="pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Dashboard</h1>
+          </div>
+          <div class="my-4 w-100">
+            <py-script>
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import json
+from pyodide.http import pyfetch
+from js import document
+import asyncio
+
+def plt_style():
+    plt.rcParams['figure.autolayout'] = True
+    plt.rcParams['figure.figsize'] = [6.4, 4.8]
+    plt.rcParams['font.family'] = 'serif'
+    plt.rcParams['font.size'] = 12
+    plt.rcParams['xtick.direction'] = 'in'
+    plt.rcParams['ytick.direction'] = 'in'
+    plt.rcParams['axes.linewidth'] = 1.0
+    plt.rcParams['errorbar.capsize'] = 6
+    plt.rcParams['lines.markersize'] = 6
+    plt.rcParams['lines.markerfacecolor'] = 'white'
+    plt.rcParams['mathtext.fontset'] = 'cm'
+
+def plot_data(data):
+    x = np.linspace(2020, 2023, len(data))
+    y = data
+    bar_colors = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red']
+    fig, ax = plt.subplots()
+
+    ax.bar(x, y,width=0.8, linestyle='-', label='Data',color=bar_colors)
+
+    ax.set_xlim(2019, 2024)
+    ax.set_ylim(0, 600000)  # Adjust the y-axis limit based on the data
+    ax.set_xlabel('Year')
+    ax.set_ylabel('Salaries')
+    ax.legend()
+    ax.set_title('Line Plot')
+    display(fig)
+def plot_pie_chart(data, labels):
+  fig, ax = plt.subplots()
+
+  ax.pie(data, labels=labels, autopct='%1.1f%%', shadow=True, startangle=140)
+  ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+  ax.set_title('Pie Chart')
+
+  display(fig)
+
+
+  plt_style()
+
+
+
+dataJson =  @JsonConvert.DeserializeObject(Model.data)
+
+data = [];
+
+for element in dataJson:
+    try:
+        integer_value = int(element)
+        data.append(integer_value)
+    except ValueError:
+        print(f"Skipping invalid value: {element}")
+
+plot_data(data)
+
+labels = ['2020', '2021', '2022', '2023']
+
+plot_pie_chart(data, labels)
+
+excelArray = @JsonConvert.DeserializeObject(Model.excelArray)
+def generate_html_table(data):
+    itr = 0
+    table_html = "<table>"
+    for row in data:
+        if itr == 5:
+            break
+        itr = itr+1
+        table_html += "<tr>"
+        for element in row:
+            table_html = table_html + "<td>"+ element + "</td>"
+        table_html = table_html + "</tr>"
+    table_html = table_html + "</table>"
+    
+    return table_html
+c = document.getElementById('table')
+df=pd.read_csv('https://www.kaggle.com/code/sowrabhghosh/data-science-salary-2020-22-analysis/input/data-science-job-salaries/ds_salaries.csv')
+df.head()
+pyscript.write('table2',df.head())
+@*itr = 0
+c.innerHTML = "<table  id="new-table">"
+for row in excelArray:
+    if itr == 5:
+        break
+    itr = itr+1
+    c.innerHTML = c.innerHTML +"<tr>"
+    for element in row:
+        print(c.innerHTML)
+        c.innerHTML = c.innerHTML + "<td>"+ element + "</td>"
+    c.innerHTML = c.innerHTML + "</tr>"
+c.innerHTML = c.innerHTML + "</table>"*@
+@*c.innerHTML = "<iframe src='https://www.kaggle.com/embed/sowrabhghosh/data-science-salary-2020-22-analysis?cellIds=5&kernelSessionId=101654505' height='300' style='margin: 0 auto; width: 100%; max-width: 950px;' frameborder='0' scrolling='auto' title='Data Science Salary[2020-22] Analysis'></iframe>"*@
+            </py-script>
+            <div id="graph-area"></div>
+            <div id="table"></div>
+            <div id="table2"></div>
+          </div>
+
+          <!-- Here is the code for the data table -->
+          <h2>Data Table</h2>
+          @*<div>
+              @JsonConvert.DeserializeObject(Model.data)
+          </div>*@
+          <div class="table-responsive small">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">Time (s)</th>
+                  <th scope="col">Sample 1 (V)</th>
+                  <th scope="col">Sample 2 (V)</th>
+                  <th scope="col">Sample 3 (V)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0</td>
+                  <td>4</td>
+                  <td>6</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>6</td>
+                  <td>3.5</td>
+                  <td>4</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>2.5</td>
+                  <td>2.5</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>3</td>
+                  <td>5.8</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>5.8</td>
+                  <td>3.8</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>2.8</td>
+                  <td>2.3</td>
+                  <td>8</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>2.5</td>
+                  <td>5.2</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>5.6</td>
+                  <td>4.3</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>3</td>
+                  <td>2.2</td>
+                  <td>6</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+
+
+</section>
+
+
+
+
+
+
+
+@section Scripts{
+<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+<script defer src="https://pyscript.net/latest/pyscript.js"></script>
+}
+
+@*@{
+    var pythonPath = @"C:\Users\Mega Providers\source\repos\Generative_AI_Tech\Generative_AI_Tech\IronPython.2.7.12\net45\ipy.exe"; // Replace with the path to IronPython
+    var scriptPath = AppDomain.CurrentDomain.BaseDirectory + "generate_data.py";
+    <h5>Path = @pythonPath</h5>
+    <h6>Path = @scriptPath</h6>
+
+    var psi = new ProcessStartInfo(pythonPath)
+    {
+    RedirectStandardOutput = true,
+    UseShellExecute = false,
+    CreateNoWindow = true,
+    Arguments = scriptPath
+    };
+
+    using (var process = new Process { StartInfo = psi })
+    {
+    process.Start();
+    process.WaitForExit();
+    }
+    }
+
+    <h2>Jobs</h2>
+
+    <!-- Include the generated table HTML -->
+    <div>
+    @Html.Raw(File.ReadAllText("wwwroot/table.html"))
+    </div>
+
+    <!-- Display the generated chart -->
+    <img src="~/charts/salary_chart.png" alt="Salary Trends" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script>
+    // Include JavaScript code for additional functionality or interactivity here
+    </script>*@

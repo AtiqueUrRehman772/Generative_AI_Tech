@@ -12,43 +12,43 @@
                     <button onclick="changeTools('Chat Gpt',`ChatGPT is a large language model-based chatbot developed by OpenAI and launched on
 November 30, 2022, notable for enabling users to refine and steer a conversation towards
 a desired length, format, style, level of detail, and language used. (Wikipedia)
-`,'/img/chatgpt-details.png','/img/chatgpt.jpeg')">
+`,'/img/chatgpt_large.jpg','/img/chatgpt_thumbnail.jpg')">
                         More Details
                     </button>
                 </div>
-                <img class="logo-img" src="~/img/chatgpt.jpeg" alt="Chat Gpt" />
+                <img class="logo-img" src="~/img/chatgpt_thumbnail.jpg" alt="Chat Gpt" />
             </div>
             <div class="img-cont">
                 <div class="img-btns">
                     <h4 class="text-center pb-2 mb-2">GOOGLE BARD</h4>
                     <button onclick="changeTools('Google Bard',`Bard is a conversational generative artificial intelligence chatbot developed by Google,
 based initially on the LaMDA family of large language models and later the PaLM LLM.(Wikipedia)
-`,'/img/google-bard-details.png','/img/google-bard.jpg')">
+`,'/img/bard_large.jpg','/img/bard_thumbnail.jpg')">
                         More Details
                     </button>
                 </div>
-                <img class="logo-img" src="~/img/google-bard.jpg" alt="Google Bard" />
+                <img class="logo-img" src="~/img/bard_thumbnail.jpg" alt="Google Bard" />
             </div>
             <div class="img-cont">
                 <div class="img-btns">
                     <h4 class="text-center pb-2 mb-2">MID JOURNEY</h4>
                     <button onclick="changeTools('Mid Journey',`Midjourney is a generative artificial intelligence program and service created and
-hosted by San Francisco-based independent research lab Midjourney, Inc. (Wikipedia)`,'/img/Midjourney-details.png','/img/midjourney.webp')">
+hosted by San Francisco-based independent research lab Midjourney, Inc. (Wikipedia)`,'/img/midjourney_large.jpg','/img/midjourney_thumbnail.jpg')">
                         More Details
                     </button>
                 </div>
-                <img class="logo-img" src="~/img/midjourney.webp" alt="Midourney" />
+                <img class="logo-img" src="~/img/midjourney_thumbnail.jpg" alt="Midourney" />
             </div>
             <div class="img-cont">
                 <div class="img-btns">
                     <h4 class="text-center pb-2 mb-2">DALL-E</h4>
                     <button onclick="changeTools('DALL-E',`DALL-E and DALL-E 2 are text-to-image models developed by OpenAI using deep learning
 methodologies to generate digital images from natural language descriptions, called prompts (Wikipedia)
-`,'/img/dall-details.png','/img/Dall.png')">
+`,'/img/dalle_large.jpg','/img/dalle_thumbnail.jpg')">
                         More Details
                     </button>
                 </div>
-                <img class="logo-img" src="~/img/Dall.png" alt="Dall-E" />
+                <img class="logo-img" src="~/img/dalle_thumbnail.jpg" alt="Dall-E" />
             </div>
         </div>
         <div class="details-card" id="details-card-tools">
@@ -83,36 +83,44 @@ else if (Model.type == "organizations")
 in Redmond, Washington. Microsofts best-known software products are the Windows line of
 operating systems, the Microsoft 365 suite of productivity applications, and the
 Internet Explorer and Edge web browsers. (Wikipedia)
-`,'/img/microsoft-details.png','/img/Microsoft-logo-dark.jpeg')">More Details</button>
+`,'/img/ms_large.jpg','/img/ms_thumbnail.jpg')">
+                        More Details
+                    </button>
                 </div>
-                <img class="logo-img" src="~/img/Microsoft-logo-dark.jpeg" alt="Microsoft Logo" />
+                <img class="logo-img" src="~/img/ms_thumbnail.jpg" alt="Microsoft Logo" />
             </div>
             <div class="img-cont">
                 <div class="img-btns">
                     <h4 class="text-center pb-2 mb-2">GOOGLE</h4>
                     <button onclick="changeOrganizations('Google',`Google LLC is an American multinational technology company focusing on artificial
 intelligence, online advertising, search engine technology, cloud computing, computer
-software, quantum computing, e-commerce, and consumer electronics. (Wikipedia)`,'/img/google-details.png','/img/google-logo-dark.jpg')">More Details</button>
+software, quantum computing, e-commerce, and consumer electronics. (Wikipedia)`,'/img/google_large.jpg','/img/google_thumbnail.jpg')">
+                        More Details
+                    </button>
                 </div>
-                <img class="logo-img" src="~/img/google-logo-dark.jpg" alt="Google Logo" />
+                <img class="logo-img" src="~/img/google_thumbnail.jpg" alt="Google Logo" />
             </div>
             <div class="img-cont">
                 <div class="img-btns">
                     <h4 class="text-center pb-2 mb-2">IBM</h4>
                     <button onclick="changeOrganizations('IBM',`The International Business Machines Corporation, nicknamed Big Blue, is an American
 multinational technology corporation headquartered in Armonk, New York and is present in over 175 countries. (Wikipedia)
-`,'/img/ibm-details.png','/img/IBM-Logo.svg')">More Details</button>
+`,'/img/ibm_large.jpg','/img/ibm_thumbnail.jpg')">
+                        More Details
+                    </button>
                 </div>
-                <img class="logo-img" src="~/img/IBM-Logo.svg" alt="IBM Logo" />
+                <img class="logo-img" src="~/img/ibm_thumbnail.jpg" alt="IBM Logo" />
             </div>
             <div class="img-cont">
                 <div class="img-btns">
                     <h4 class="text-center pb-2 mb-2">Amazon</h4>
                     <button onclick="changeOrganizations('Amazon',`Amazon.com, Inc. is an American multinational technology company focusing on e-commerce,
 cloud computing, online advertising, digital streaming, and artificial intelligence.(Wikipedia)
-`,'/img/amazon-details.png','/img/Amazon-Logo-dark.webp')">More Details</button>
+`,'/img/amazon_large.jpg','/img/amazon_thumbnail.jpg')">
+                        More Details
+                    </button>
                 </div>
-                <img class="logo-img" src="~/img/Amazon-Logo-dark.webp" alt="Amazon Logo" />
+                <img class="logo-img" src="~/img/amazon_thumbnail.jpg" alt="Amazon Logo" />
             </div>
         </div>
         <div class="details-card" id="details-card-organizations">
@@ -135,34 +143,123 @@ cloud computing, online advertising, digital streaming, and artificial intellige
         </div>
     </section>
 }
+else if (Model.type == "applications")
+{
+    <section class="gen-ai-main gen-ai-main-applications">
+        <h1 class="w-100 text-center mb-5 pt-5">GenAI Applications</h1>
+        <div class="w-lg-75 w-sm-100 d-flex justify-content-center">
+            <div class="img-cont">
+                <div class="img-btns">
+                    <h4 class="text-center pb-2 mb-2">CHAT-GPT</h4>
+                    <button onclick="changeApplications('Chat-GPT',`ChatGPT is a large language model-based chatbot developed by OpenAI and launched on
+November 30, 2022, notable for enabling users to refine and steer a conversation towards
+a desired length, format, style, level of detail, and language used. (Wikipedia)
+`,'/img/chatgpt_large.jpg','/img/chatgpt_thumbnail.jpg')">
+                        More Details
+                    </button>
+                </div>
+                <img class="logo-img" src="~/img/chatgpt_thumbnail.jpg" alt="Chat-gpt Logo" />
+            </div>
+            <div class="img-cont">
+                <div class="img-btns">
+                    <h4 class="text-center pb-2 mb-2">GITHUB CO-PILOT</h4>
+                    <button onclick="changeApplications('GITHUB CO-PILOT',`GitHub Copilot is a cloud-based artificial intelligence tool developed by GitHub and
+OpenAI to assist users of Visual Studio Code, Visual Studio, Neovim, and JetBrains
+integrated development environments by autocompleting code. (Wikipedia)
+`,'/img/githubcopilot_large.jpg','/img/githubcopilot_thumbnail.jpg')">
+                        More Details
+                    </button>
+                </div>
+                <img class="logo-img" src="~/img/githubcopilot_thumbnail.jpg" alt="Github Copilot Logo" />
+            </div>
+            <div class="img-cont">
+                <div class="img-btns">
+                    <h4 class="text-center pb-2 mb-2">DALL-E</h4>
+                    <button onclick="changeApplications('DALL-E',`DALL-E and DALL-E 2 are text-to-image models developed by OpenAI using deep learning
+methodologies to generate digital images from natural language descriptions, called
+'prompts'. DALL-E was revealed by OpenAI in a blog post in January 2021, and uses a
+version of GPT-3 modified to generate images. (Wikipedia)
+`,'/img/dalle_large.jpg','/img/dalle_thumbnail.jpg')">
+                        More Details
+                    </button>
+                </div>
+                <img class="logo-img" src="~/img/dalle_thumbnail.jpg" alt="Dall-E Logo" />
+            </div>
+            <div class="img-cont">
+                <div class="img-btns">
+                    <h4 class="text-center pb-2 mb-2">Synthesia</h4>
+                    <button onclick="changeApplications('Synthesia',`Synthesia is a synthetic media generation platform used to create AI generated video
+content. Based in London, England, it counts among its users businesses including
+Amazon, Tiffany & Co. and IHG Hotels & Resorts. (Wikipedia)
+`,'/img/synthesia_large.jpg','/img/synthesia_thumbnail.jpg')">
+                        More Details
+                    </button>
+                </div>
+                <img class="logo-img bg-dark" src="~/img/synthesia_thumbnail.jpg" alt="Synthesia Logo" />
+            </div>
+        </div>
+        <div class="details-card" id="details-card-applications">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                    <img id="applications-detail-image" src="" alt="detail" />
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <h3 id="applications-details-heading"></h3>
+                    <button>More Details</button>
+                    <p id="applications-details-dt"></p>
+                    <div class="tool-logo-container">
+                        <a href="#">Visit Website</a>
+                        <div>
+                            <img id="applications-logo" src="" alt="Midjourney Logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
 
 @section Scripts{
     @if(Model.type == "tools"){
-        <script>
-            $(document).ready(()=>{
-                $('#details-card-tools').hide();
-            });
-            function changeTools(heading,details,img,logo){
-                $('#tools-details-heading').html(heading);
-                $('#tools-details-dt').html(details);
-                $('#tools-logo').attr('src',logo);
-                $('#tools-detail-image').attr('src',img);
-                $('#details-card-tools').show();
-            }
-        </script>
+<script>
+    $(document).ready(()=>{
+        $('#details-card-tools').hide();
+    });
+    function changeTools(heading,details,img,logo){
+        $('#tools-details-heading').html(heading);
+        $('#tools-details-dt').html(details);
+        $('#tools-logo').attr('src',logo);
+        $('#tools-detail-image').attr('src',img);
+        $('#details-card-tools').show();
+    }
+</script>
     }
     else if(Model.type == "organizations"){
-        <script>
-            $(document).ready(()=>{
-                $('#details-card-organizations').hide();
-            });
-            function changeOrganizations(heading,details,img,logo){
-                $('#organizations-details-heading').html(heading);
-                $('#organizations-details-dt').html(details);
-                $('#organizations-logo').attr('src',logo);
-                $('#organizations-detail-image').attr('src',img);
-                $('#details-card-organizations').show();
-            }
-        </script>
+<script>
+    $(document).ready(()=>{
+        $('#details-card-organizations').hide();
+    });
+    function changeOrganizations(heading,details,img,logo){
+        $('#organizations-details-heading').html(heading);
+        $('#organizations-details-dt').html(details);
+        $('#organizations-logo').attr('src',logo);
+        $('#organizations-detail-image').attr('src',img);
+        $('#details-card-organizations').show();
+    }
+</script>
+    }
+    else if(Model.type == "applications"){
+<script>
+    $(document).ready(()=>{
+        $('#details-card-applications').hide();
+    });
+    function changeApplications(heading,details,img,logo){
+        $('#applications-details-heading').html(heading);
+        $('#applications-details-dt').html(details);
+        $('#applications-logo').attr('src',logo);
+        $('#applications-detail-image').attr('src',img);
+        $('#details-card-applications').show();
+    }
+</script>
     }
 }
