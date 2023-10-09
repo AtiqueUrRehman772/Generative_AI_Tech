@@ -2,17 +2,32 @@
 @using Newtonsoft.Json
 
 <section class="jobs-parallax">
-    <h1 class="w-100 text-center mb-5 pt-5">AI Jobs</h1>
+    <div class="container-fluid">
+        <h1 class="w-100 text-center mb-5 pt-5">AI Jobs</h1>
 
+        <p class="text-white text-center">AI job dataset : Insights AI-Jobs</p>
+        <p class="text-white text-center">Python source for tables and charts : Kaggle</p>
 
-
-
+        <div class="row p-4">
+            <div class="col-lg-4 col-sm-12">
+                <div class="ps-card">
+                    <h2>Top 5 Companies</h2>
+                    <p>
+                        according to number of employees
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-8 col-sm-12">
+                <div id="table"></div>
+            </div>
+        </div>
+        <div class="row p-4 w-lg-75 m-auto">
+            <div class="col-lg-8 col-sm-12 d-flex justify-content-center">
 <py-config>
     packages = ["matplotlib", "pandas", "numpy"]
 </py-config>
 
-    <div class="container-fluid">
-            <py-script>
+<py-script output="piechart">
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -21,7 +36,17 @@ from pyodide.http import pyfetch
 from pyodide.http import open_url
 from js import document
 import asyncio
+def plot_pie_chart(data, labels):
+  fig, ax = plt.subplots()
 
+  ax.pie(data, labels=labels, autopct='%1.1f%%', shadow=True, startangle=140)
+  ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+  ax.set_title('Pie Chart')
+
+  display(fig)
+
+
+  plt_style()
 def plt_style():
     plt.rcParams['figure.autolayout'] = True
     plt.rcParams['figure.figsize'] = [6.4, 4.8]
@@ -35,34 +60,6 @@ def plt_style():
     plt.rcParams['lines.markerfacecolor'] = 'white'
     plt.rcParams['mathtext.fontset'] = 'cm'
 
-def plot_data(data):
-    x = np.linspace(2020, 2023, len(data))
-    y = data
-    bar_colors = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red']
-    fig, ax = plt.subplots()
-
-    ax.bar(x, y,width=0.8, linestyle='-', label='Data',color=bar_colors)
-
-    ax.set_xlim(2019, 2024)
-    ax.set_ylim(0, 600000)  # Adjust the y-axis limit based on the data
-    ax.set_xlabel('Year')
-    ax.set_ylabel('Salaries')
-    ax.legend()
-    ax.set_title('Line Plot')
-    display(fig)
-def plot_pie_chart(data, labels):
-  fig, ax = plt.subplots()
-
-  ax.pie(data, labels=labels, autopct='%1.1f%%', shadow=True, startangle=140)
-  ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-  ax.set_title('Pie Chart')
-
-  display(fig)
-
-
-  plt_style()
-
-
 
 dataJson =  @JsonConvert.DeserializeObject(Model.data)
 
@@ -75,7 +72,7 @@ for element in dataJson:
     except ValueError:
         print(f"Skipping invalid value: {element}")
 
-plot_data(data)
+#plot_data(data)
 
 labels = ['2020', '2021', '2022', '2023']
 
@@ -101,32 +98,67 @@ url_content = open_url("https://localhost:44373/files/salaries2023.csv")
 df = pd.read_csv(url_content)
 df.head()
 pyscript.write('table',df.head())
-@*itr = 0
-c.innerHTML = "<table  id="new-table">"
-for row in excelArray:
-    if itr == 5:
-        break
-    itr = itr+1
-    c.innerHTML = c.innerHTML +"<tr>"
-    for element in row:
-        print(c.innerHTML)
-        c.innerHTML = c.innerHTML + "<td>"+ element + "</td>"
-    c.innerHTML = c.innerHTML + "</tr>"
-c.innerHTML = c.innerHTML + "</table>"*@
-@*c.innerHTML = "<iframe src='https://www.kaggle.com/embed/sowrabhghosh/data-science-salary-2020-22-analysis?cellIds=5&kernelSessionId=101654505' height='300' style='margin: 0 auto; width: 100%; max-width: 950px;' frameborder='0' scrolling='auto' title='Data Science Salary[2020-22] Analysis'></iframe>"*@
-      </py-script>
-      <div class="row">
-          <div class="col-lg-4 col-sm-12">
-              <div class="ps-card"></div>
-          </div>
-          <div class="col-lg-8 col-sm-12">
-              <div id="table"></div>
-          </div>
-      </div>
-      <div id="graph-area"></div>
-   </div>
+</py-script>
+               <div id="graph-area"></div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="ps-card">
+                    <h2>Job distribution</h2>
+                    <p>among top 10 in demand job title</p>
+                </div>
+            </div>
+        </div>      
+        <div class="row p-4 d-flex justify-content-center">
+            <div class="col-lg-4 col-sm-12">
+                <div class="ps-card">
+                    <h2>Slaries</h2>
+                    <p>
+                        in last 3 years
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-8 col-sm-12 d-flex justify-content-center">
+                <py-script output="barplot">
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import json
+from pyodide.http import pyfetch
+from pyodide.http import open_url
+from js import document
+import asyncio
 
+def plot_data(data):
+    x = np.linspace(2020, 2023, len(data))
+    y = data
+    bar_colors = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red']
+    fig, ax = plt.subplots()
 
+    ax.bar(x, y,width=0.8, linestyle='-', label='Data',color=bar_colors)
+
+    ax.set_xlim(2019, 2024)
+    ax.set_ylim(0, 600000)  # Adjust the y-axis limit based on the data
+    ax.set_xlabel('Year')
+    ax.set_ylabel('Salaries')
+    ax.legend()
+    ax.set_title('Line Plot')
+    display(fig)
+dataJson1 =  @JsonConvert.DeserializeObject(Model.data)
+
+data1 = [];
+
+for element1 in dataJson1:
+    try:
+        integer_value1 = int(element1)
+        data1.append(integer_value1)
+    except ValueError:
+        print(f"Skipping invalid value: {element1}")
+
+plot_data(data1)
+                </py-script>
+            </div>
+        </div>      
+    </div>
 </section>
 
 

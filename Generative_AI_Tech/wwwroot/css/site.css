@@ -163,7 +163,7 @@ video {
     position:relative;
 }
 
-    .gen-ai-content h2 {
+    .gen-ai-content h2,.ps-card h2{
         font-size: 4vw;
         color: #ffb600;
         font-family: 'Anton', sansserif;
@@ -320,7 +320,7 @@ py-script img{
     padding:5px;
     background-color:#fff;
     margin:2px;
-    max-width:450px;
+    max-width:100%;
 }
 /*Jobs Parallax*/
 .jobs-parallax {
@@ -357,6 +357,9 @@ tbody, td, tfoot, th, thead, tr {
     color:yellow;
     text-align: center;
 }
+#table{
+    overflow-x:scroll;
+}
 #table table {
     width: 100%;
     overflow-x: auto;
@@ -387,7 +390,7 @@ tbody, td, tfoot, th, thead, tr {
     --bs-table-accent-bg: var(--bs-table-striped-bg);
     color: var(--bs-table-striped-color);
 }
-#table table tbody td:nth-child(1) {
+#table table tbody th{
     background-color: navy;
     color: yellow;
     text-align: center;
@@ -398,6 +401,55 @@ tbody, td, tfoot, th, thead, tr {
     border-bottom-width: 1px;
 }
 .ps-card {
-    background-color: #1d1db796;
-    padding: 1vw
+    background-color: #1212d55e;
+    padding: 1vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+.ps-card p {
+    font-style:italic;
+    color:#fff;
+}
+
+.contact-us-container {
+    background-image: url('/img/background/bg1.jpg');
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+    .contact-us-container h1 {
+        font-family: 'Anton', sansserif;
+        background-image: linear-gradient(to right, brown, brown, yellow, white, yellow, brown, brown);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        padding: 2vw 2vw 0vw 2vw;
+        text-align: center;
+        font-size: 8vw;
+        text-transform: uppercase;
+    }
+.contact-card {
+    background-color: #1212d55e;
+    height: 100%;
+    box-shadow: rgb(253 253 253) 10px 10px 0px 0px;
+}
+    .contact-card a {
+        color: #9ea5af;
+        font-size:13pt;
+    }
+    .contact-card h4 {
+        font-size: 4vw;
+        color: #ffb600;
+        font-family: Lucida Handwriting;
+        text-shadow: 2px 2px 4px rgb(192 173 239 / 50%);
+        text-align: center;
+    }
+    .contact-card p {
+        color: #fff;
+        text-align: center;
+        font-size: 13pt;
+    }

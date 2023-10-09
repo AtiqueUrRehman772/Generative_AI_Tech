@@ -100,6 +100,14 @@ namespace Generative_AI_Tech.Controllers
         {
             return View();
         }
+        public IActionResult Login()
+        {
+            return View();
+        }
+        public IActionResult Register()
+        {
+            return View();
+        }
 
 
         [HttpGet]
@@ -166,14 +174,6 @@ namespace Generative_AI_Tech.Controllers
             {
                 throw;
             }
-
-        public IActionResult login()
-        {
-            return View();
-        }
-        public IActionResult register()
-        {
-            return View();
         }
         public IActionResult loginUser(string email, string password)
         {
