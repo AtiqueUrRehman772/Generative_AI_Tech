@@ -448,3 +448,20 @@ tbody, td, tfoot, th, thead, tr {
         text-align: center;
         font-size: 13pt;
     }
+
+.GenAIs-Section {
+    background-image: url(../img/background/bg2.jpg);
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: cover;
+    min-height: 100vh;
+}
+.GenAIs-Section {
+    font-family: 'Anton', sansserif;
+    background-image: linear-gradient(to right, brown, brown, yellow, white, yellow, brown, brown);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 2vw 2vw 0vw 2vw;
+    text-align: center;
+    font-size: 8vw;
+}

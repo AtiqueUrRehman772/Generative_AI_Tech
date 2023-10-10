@@ -14,6 +14,7 @@ namespace Generative_AI_Tech.Controllers
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IConfiguration _config;
         private string _constr;
+        private UserModal _current_user;
 
         public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHostEnvironment, IConfiguration config)
         {
@@ -21,11 +22,17 @@ namespace Generative_AI_Tech.Controllers
             _webHostEnvironment = webHostEnvironment;
             _config = config;
             _constr = _config.GetConnectionString("default");
+            _current_user = new UserModal()
+            {
+                Email = "",
+                Name = "",
+                Password = ""
+            };
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_current_user);
         }
 
         public IActionResult Privacy()
@@ -190,9 +197,13 @@ namespace Generative_AI_Tech.Controllers
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    return RedirectToAction("Index",new{email=email });
+                    con.Close();
+                    _current_user.Email = email;
+                    _current_user.Password = password;
+                    return RedirectToAction("Index", new { email = email });
                 }
-                return RedirectToAction("Login",new{ email = "wrongcreds" });
+                con.Close();
+                return RedirectToAction("Login", new { email = "wrongcreds" });
             }
             catch (Exception)
             {
@@ -214,6 +225,26 @@ namespace Generative_AI_Tech.Controllers
             catch (Exception)
             {
                 return RedirectToAction("Register");
+                throw;
+            }
+        }
+
+        public IActionResult AddNewWebsite(string site_name, string summary)
+        {
+            try
+            {
+                string image_name = "";
+                SqlConnection con = new SqlConnection(_constr);
+                string query = "insert into tbl_genai (site_name,image_name,summary) values('" + site_name + "','" + image_name + "','" + summary + "')";
+                SqlCommand command = new SqlCommand(query, con);
+                command.ExecuteNonQuery();
+                con.Open();
+                con.Close();
+                return View();
+            }
+            catch (Exception)
+            {
+                return Ok(StatusCodes.Status404NotFound);
                 throw;
             }
         }

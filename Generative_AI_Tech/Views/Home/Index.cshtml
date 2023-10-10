@@ -97,71 +97,83 @@
     <div class="gen-ai-content">
         <h2 class="text-center">List of Generative AI Websites</h2>
         <p class="text-center fs-4" id="login-link">Please <a href="#">Login</a> or <a href="#">Register</a> to add a new generative AI Website</p>
+        <div class="row">
+            @if (Model._current_user?.Email != "")
+            {
+                for (int i = 0; i < Model._current_user?.GenAiSites?.Count; i++)
+                {
+                    <div class="col-lg-2 col-sm-4">
+                        <div class="site-card">
+                        </div>
+                    </div>
+                }
+            }
+        </div>
     </div>
 </section>
 
 
 @section Scripts{
-<script>
-    $(document).ready(()=>{
-       const urlSearchParams = new URLSearchParams(window.location.search);
-       const params = Object.fromEntries(urlSearchParams.entries());
-       $("#profile-email").html(params?.email);
-       setTimeout(()=>{
-           let localemail = localStorage.getItem('loginStatus');
-           if(params?.email != null && params?.email != undefined){
-               localStorage.setItem('loginStatus',params?.email);
-               $('.loginbtn').hide();
-               $('#profile-email').show();
-               $('#login-link').html(`<a href="/GenAI/Create">Click here to add a new generative AI website.</a>`);
-               $('#logout-btn').show();
-           }
-           else if(localemail != null && localemail != undefined){
-               $('.loginbtn').hide();
-               $('#profile-email').show();
-               $('#profile-email').html(localemail);
-               $('#login-link').html(`<a href="/GenAIs/Create">Click here to add a new generative AI website.</a>`);
-               $('#logout-btn').show();
-           }
-           else{
-               $('#profile-email').hide();
-               $('.loginbtn').show();
-               $('#login-link').html(`Please <a href="/Home/Login">Login</a> or <a href="/Home/Register">Register</a> to add a new generative AI Website`);
-               $('#logout-btn').hide();
-           }
-       },800);
-    });
-
-    // Function to check if an element is in the viewport
-    function isElementInViewport(el) {
-        const rect = el.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    }
-
-    // Function to handle the visibility of the GenAI section
-    function handleGenAiVisibility() {
-        const genAiSection = document.querySelectorAll('.gen-ai-content');
-        genAiSection.forEach(element => {
-            if (isElementInViewport(element)) {
-                element.classList.add('in-viewport');
-            } else {
-                element.classList.remove('in-viewport');
-            }
+    <script>
+        $(document).ready(() => {
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            const params = Object.fromEntries(urlSearchParams.entries());
+            $("#profile-email").html(params?.email);
+            setTimeout(() => {
+                let localemail = localStorage.getItem('loginStatus');
+                if (params?.email != null && params?.email != undefined) {
+                    localStorage.setItem('loginStatus', params?.email);
+                    $('.loginbtn').hide();
+                    $('#profile-email').show();
+                    $('#login-link').html(`<a href="/GenAI/Create">Click here to add a new generative AI website.</a>`);
+                    $('#logout-btn').show();
+                }
+                else if (localemail != null && localemail != undefined) {
+                    $('.loginbtn').hide();
+                    $('#profile-email').show();
+                    $('#profile-email').html(localemail);
+                    $('#login-link').html(`<a href="/GenAIs/Create">Click here to add a new generative AI website.</a>`);
+                    $('#logout-btn').show();
+                }
+                else {
+                    $('#profile-email').hide();
+                    $('.loginbtn').show();
+                    $('#login-link').html(`Please <a href="/Home/Login">Login</a> or <a href="/Home/Register">Register</a> to add a new generative AI Website`);
+                    $('#logout-btn').hide();
+                }
+            }, 800);
         });
-    }
 
-    // Attach a scroll event listener to check when the GenAI section enters the viewport
-    window.addEventListener('scroll', handleGenAiVisibility);
-    window.addEventListener('resize', handleGenAiVisibility);
+        // Function to check if an element is in the viewport
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
 
-    // Initial check in case the section is already in the viewport on page load
-    handleGenAiVisibility();
+        // Function to handle the visibility of the GenAI section
+        function handleGenAiVisibility() {
+            const genAiSection = document.querySelectorAll('.gen-ai-content');
+            genAiSection.forEach(element => {
+                if (isElementInViewport(element)) {
+                    element.classList.add('in-viewport');
+                } else {
+                    element.classList.remove('in-viewport');
+                }
+            });
+        }
+
+        // Attach a scroll event listener to check when the GenAI section enters the viewport
+        window.addEventListener('scroll', handleGenAiVisibility);
+        window.addEventListener('resize', handleGenAiVisibility);
+
+        // Initial check in case the section is already in the viewport on page load
+        handleGenAiVisibility();
 
 
-</script>
+    </script>
 }
