@@ -14,7 +14,7 @@ namespace Generative_AI_Tech.Controllers
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IConfiguration _config;
         private string _constr;
-        private UserModal _current_user;
+        private static UserModal _current_user;
 
         public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHostEnvironment, IConfiguration config)
         {
@@ -32,6 +32,10 @@ namespace Generative_AI_Tech.Controllers
 
         public IActionResult Index()
         {
+            if(_current_user?.Email != "")
+            {
+                _current_user.GenAiSites = GetAllSites();
+            }
             return View(_current_user);
         }
 
@@ -245,6 +249,35 @@ namespace Generative_AI_Tech.Controllers
             catch (Exception)
             {
                 return Ok(StatusCodes.Status404NotFound);
+                throw;
+            }
+        }
+        public List<SiteModal> GetAllSites()
+        {
+            try
+            {
+                List<SiteModal> list = new List<SiteModal>();
+                string image_name = "";
+                SqlConnection con = new SqlConnection(_constr);
+                string query = "select * from tbl_genai";
+                con.Open();
+                SqlCommand command = new SqlCommand(query, con);
+                SqlDataReader sdr = command.ExecuteReader();
+                while (sdr.Read())
+                {
+                    list.Add(new SiteModal()
+                    {
+                        Id = sdr["id"].ToString(),
+                        Image_Name = sdr["image_name"].ToString(),
+                        SiteName = sdr["site_name"].ToString(),
+                        Summary = sdr["summary"].ToString()
+                    });
+                }
+                con.Close();
+                return list;
+            }
+            catch (Exception)
+            {
                 throw;
             }
         }
