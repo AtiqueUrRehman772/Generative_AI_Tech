@@ -96,6 +96,7 @@
 <section class="gen-ai-joblist">
     <div class="gen-ai-content">
         <h2 class="text-center">List of Generative AI Websites</h2>
+        <span>@Model?.Email</span>
         @if (Model?.Email != "")
         {
             <a href="/GenAIs/Create">Click here to add a new generative AI website.</a>
@@ -111,6 +112,7 @@
                 {
                     <div class="col-lg-2 col-sm-4">
                         <div class="site-card">
+                            Model?.GenAiSites[0]?.Site_Name
                         </div>
                     </div>
                 }
@@ -118,8 +120,6 @@
         </div>
     </div>
 </section>
-
-
 @section Scripts{
     <script>
         $(document).ready(() => {

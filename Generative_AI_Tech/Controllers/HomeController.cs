@@ -15,7 +15,7 @@ namespace Generative_AI_Tech.Controllers
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IConfiguration _config;
         private string _constr;
-        private static UserModal _current_user;
+        private static UserModal _current_user = new UserModal();
 
         public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHostEnvironment, IConfiguration config)
         {
@@ -23,18 +23,13 @@ namespace Generative_AI_Tech.Controllers
             _webHostEnvironment = webHostEnvironment;
             _config = config;
             _constr = _config.GetConnectionString("default");
-            _current_user = new UserModal()
-            {
-                Email = "",
-                Name = "",
-                Password = ""
-            };
         }
 
         public IActionResult Index()
         {
-            if (_current_user?.Email != "")
+            if (_current_user != null && _current_user?.Email != "")
             {
+                _current_user.GenAiSites = new List<SiteModal>();
                 _current_user.GenAiSites = GetAllSites();
             }
             return View(_current_user);
