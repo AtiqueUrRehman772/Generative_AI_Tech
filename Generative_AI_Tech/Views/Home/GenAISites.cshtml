@@ -1,0 +1,33 @@
+﻿@{
+
+}
+<section class="gen-ai-websites">
+    <h1>Generative AI Websites</h1>
+    <div class="container-fluid">
+        @if (Model?.Email != null && Model?.Email != "")
+        {
+            for (var i = 0; i < Model?.GenAiSites?.Count; i++)
+            {
+                <div class="row" id="@Model?.GenAiSites[i].Site_Name">
+                    <div class="col-lg-4 col-sm-12 p-0">
+                        <img class="site-image" src="/img/uploads/@Model?.GenAiSites[i].Image_Name">
+                    </div>
+                    <div class="col-lg-8 col-sm-12 site-details p-4">
+                        <h3 class="text-center blue-heading">@Model?.GenAiSites[i].Site_Name</h3>
+                        <p>
+                            @Model?.GenAiSites[i].Summary
+                        </p>
+                        <div class="container d-flex">
+                            <button class="m-2 btn btn-primary">Like(0)</button>
+                            @if (Model?.Role == "admin")
+                            {
+                                <button class="m-2 btn btn-success">Edit</button>
+                                <button class="m-2 btn btn-danger">Delete</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</section>

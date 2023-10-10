@@ -494,7 +494,7 @@ tbody, td, tfoot, th, thead, tr {
         font-size: 13pt;
     }
 
-.GenAIs-Section {
+.GenAIs-Section, .gen-ai-websites, .delete-section {
     background-image: url(../img/background/bg2.jpg);
     background-position: center;
     background-repeat: repeat-y;
@@ -502,7 +502,7 @@ tbody, td, tfoot, th, thead, tr {
     min-height: 100vh;
 }
 
-    .GenAIs-Section h1 {
+    .GenAIs-Section h1, .delete-section h1 {
         font-family: 'Anton', sansserif;
         background-image: linear-gradient(to right, brown, brown, yellow, white, yellow, brown, brown);
         -webkit-background-clip: text;
@@ -521,3 +521,71 @@ tbody, td, tfoot, th, thead, tr {
             margin:5px;
             color:#fff;
         }
+.site-card {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 165px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+}
+.site-card:hover {
+    animation-name: fade-image;
+    animation-duration: 2s;
+    animation-iteration-count:1;
+}
+@keyframes fade-image{
+    0%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}
+    .site-card * {
+        color: #000;
+    }
+
+
+    .gen-ai-websites h1 {
+        font-family: 'Anton', sansserif;
+        background-image: linear-gradient(to right, brown, brown, yellow, white, yellow, brown, brown);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        padding: 2vw 2vw 0vw 2vw;
+        text-align: center;
+        font-size: 8vw;
+    }
+.gen-ai-websites img{
+    width:100%;
+    height:auto;
+    max-height:300px;
+}
+.blue-heading {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #fffffff5;
+    color: navy;
+    font-weight: bold;
+    border-bottom: 2px solid #ffe000cc;
+    padding-bottom: 2px;
+    text-transform: uppercase;
+}
+.site-details {
+    background: linear-gradient(to bottom,#ffbc40,#fff);
+}
+.delete-section h3 {
+    color: yellow;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #68589b99;
+    width:  80vw;
+    margin-left:auto;
+    margin-right:auto;
+    padding:5px;
+    text-align:center;
+    margin-top:4vw;
+    border-top:1px solid yellow;
+    border-bottom:1px solid yellow;
+}

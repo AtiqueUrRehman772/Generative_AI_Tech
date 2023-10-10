@@ -27,7 +27,7 @@ namespace Generative_AI_Tech.Controllers
 
         public IActionResult Index()
         {
-            if (_current_user != null && _current_user?.Email != "")
+            if (_current_user != null && _current_user?.Email != "" && _current_user?.Email != null)
             {
                 _current_user.GenAiSites = new List<SiteModal>();
                 _current_user.GenAiSites = GetAllSites();
@@ -119,7 +119,15 @@ namespace Generative_AI_Tech.Controllers
         {
             return View();
         }
-
+        public IActionResult GenAISites()
+        {
+            if (_current_user != null && _current_user?.Email != "" && _current_user?.Email != null)
+            {
+                _current_user.GenAiSites = new List<SiteModal>();
+                _current_user.GenAiSites = GetAllSites();
+            }
+            return View(_current_user);
+        }
 
         [HttpGet]
         public List<string> ReadDataFromExcel()
@@ -153,8 +161,6 @@ namespace Generative_AI_Tech.Controllers
                 throw;
             }
         }
-
-
         [HttpGet]
         public List<string[]> ReadCsvFile()
         {
@@ -197,9 +203,10 @@ namespace Generative_AI_Tech.Controllers
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    con.Close();
                     _current_user.Email = email;
                     _current_user.Password = password;
+                    _current_user.Role = reader["Role"].ToString()?.ToLower();
+                    con.Close();
                     return RedirectToAction("Index", new { email = email });
                 }
                 con.Close();
@@ -217,7 +224,7 @@ namespace Generative_AI_Tech.Controllers
             {
                 SqlConnection con = new SqlConnection(_constr);
                 con.Open();
-                string query = "insert into tbl_users(UserName,Email,Password) values('" + name + "','" + email + "','" + password + "')";
+                string query = "insert into tbl_users(UserName,Email,Password,Role) values('" + name + "','" + email + "','" + password + "','user')";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
                 return RedirectToAction("Login");
@@ -228,7 +235,11 @@ namespace Generative_AI_Tech.Controllers
                 throw;
             }
         }
-
+        public string Logout()
+        {
+            _current_user.Email = null;
+            return "done";
+        }
         public async Task<IActionResult> AddNewWebsite(SiteModal model)
         {
             try
@@ -248,7 +259,8 @@ namespace Generative_AI_Tech.Controllers
                     }
                 }
                 SqlConnection con = new SqlConnection(_constr);
-                string query = "insert into tbl_genai (site_name,image_name,summary) values('" + model.Site_Name + "','" + model.Image_Name + "','" + model.Summary + "')";
+                string query = @"insert into tbl_genai (site_name,image_name,summary) values('" + model.Site_Name + "','" + model.Image_Name + "','" + model.Summary + "')";
+                
                 con.Open();
                 SqlCommand command = new SqlCommand(query, con);
                 command.ExecuteNonQuery();
@@ -289,6 +301,12 @@ namespace Generative_AI_Tech.Controllers
             {
                 throw;
             }
+        }
+        [HttpPost]
+        public string SetEmail(string email)
+        {
+            _current_user.Email = email;
+            return "Done";
         }
     }
 

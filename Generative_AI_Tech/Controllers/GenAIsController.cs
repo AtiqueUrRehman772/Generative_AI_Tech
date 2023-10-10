@@ -8,5 +8,9 @@ namespace Generative_AI_Tech.Controllers
         {
             return View();
         }
+        public IActionResult Delete()
+        {
+            return View();
+        }
     }
 }
