@@ -15,31 +15,26 @@ html {
 p{
     font-size:1.5vw
 }
-
+.logout-btn{
+    margin-left:5px;
+    margin-right:5px;
+}
 /*This code hides the scollbars -- if required, un-comment following lines*/
-
-
 /*::-webkit-scrollbar {
     display:none;
 }*/
-
 /* Track */
 /*::-webkit-scrollbar-track {
     display: none;
 }*/
-
 /* Handle */
 /*::-webkit-scrollbar-thumb {
     display: none;
 }*/
-
-    /* Handle on hover */
-    /*::-webkit-scrollbar-thumb:hover {
+/* Handle on hover */
+/*::-webkit-scrollbar-thumb:hover {
         display: none;
     }*/
-
-
-
 /* Apply styles to the hero section */
 .hero-section {
     position: relative; /* Ensure relative positioning */
@@ -444,7 +439,7 @@ tbody, td, tfoot, th, thead, tr {
     .contact-card h4 {
         font-size: 4vw;
         color: #ffb600;
-        font-family: Lucida Handwriting;
+        font-family: 'Brush Script MT';
         text-shadow: 2px 2px 4px rgb(192 173 239 / 50%);
         text-align: center;
     }

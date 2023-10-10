@@ -12,11 +12,15 @@ namespace Generative_AI_Tech.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IConfiguration _config;
+        private string _constr;
 
-        public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHostEnvironment)
+        public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHostEnvironment, IConfiguration config)
         {
             _logger = logger;
             _webHostEnvironment = webHostEnvironment;
+            _config = config;
+            _constr = _config.GetConnectionString("default");
         }
 
         public IActionResult Index()
@@ -88,7 +92,7 @@ namespace Generative_AI_Tech.Controllers
                 responseData.Add((sal2022 / sal2022c).ToString());
                 responseData.Add((sal2021 / sal2021c).ToString());
                 responseData.Add((sal2020 / sal2020c).ToString());
-                return View(new { data = JsonConvert.SerializeObject(responseData,Formatting.Indented),excelArray = JsonConvert.SerializeObject(data) });
+                return View(new { data = JsonConvert.SerializeObject(responseData, Formatting.Indented), excelArray = JsonConvert.SerializeObject(data) });
             }
             catch (Exception)
             {
@@ -177,25 +181,41 @@ namespace Generative_AI_Tech.Controllers
         }
         public IActionResult loginUser(string email, string password)
         {
-            SqlConnection con = new SqlConnection("connection");
-            con.Open();
-            string query = "select * from user where email='" + email + "' and password='" + password + "'";
-            SqlCommand cmd = new SqlCommand(query, con);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            try
             {
-                return RedirectToAction("Index");
+                SqlConnection con = new SqlConnection(_constr);
+                con.Open();
+                string query = "select * from tbl_users where email='" + email + "' and password='" + password + "'";
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return RedirectToAction("Index",new{email=email });
+                }
+                return RedirectToAction("Login",new{ email = "wrongcreds" });
             }
-            return RedirectToAction("login");
+            catch (Exception)
+            {
+                return RedirectToAction("Login");
+                throw;
+            }
         }
         public IActionResult registerUser(string name, string email, string password)
         {
-            SqlConnection con = new SqlConnection("connection");
-            con.Open();
-            string query = "insert into uservalues('" + name + "'," + email + "','" + password + "')";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.ExecuteNonQuery();
-            return RedirectToAction("Index");
+            try
+            {
+                SqlConnection con = new SqlConnection(_constr);
+                con.Open();
+                string query = "insert into tbl_users(UserName,Email,Password) values('" + name + "','" + email + "','" + password + "')";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+                return RedirectToAction("Login");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Register");
+                throw;
+            }
         }
     }
 
