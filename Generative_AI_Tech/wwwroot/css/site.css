@@ -12,12 +12,14 @@ html {
     position: relative;
     min-height: 100%;
 }
-p{
-    font-size:1.5vw
+
+p {
+    font-size: 1.5vw
 }
-.logout-btn{
-    margin-left:5px;
-    margin-right:5px;
+
+.logout-btn {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 /*This code hides the scollbars -- if required, un-comment following lines*/
 /*::-webkit-scrollbar {
@@ -112,14 +114,16 @@ video {
     padding-bottom: 2rem;
     position: relative;
 }
-.readmore-btn{
-    background:transparent;
-    border:1px solid #fffc;
-    border-radius:5px;
-    color:#fff;
-    padding:3px;
-    text-decoration:none;
+
+.readmore-btn {
+    background: transparent;
+    border: 1px solid #fffc;
+    border-radius: 5px;
+    color: #fff;
+    padding: 3px;
+    text-decoration: none;
 }
+
 .gen-ai-joblist {
     background-image: url(../img/background/bg2.jpg);
     background-position: center;
@@ -129,23 +133,26 @@ video {
     padding-bottom: 2rem;
     position: relative;
 }
+
     .gen-ai-joblist .gen-ai-content {
-        opacity:1 !important;
+        opacity: 1 !important;
     }
-    /* Apply a backdrop-filter to blur the background */
-    .gen-ai-section::before {
-        content: ""; /* Create a pseudo-element to cover the background */
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        backdrop-filter: blur(2px); /* Adjust the blur value as needed */
-        z-index: 1; /* Place it behind the content */
-    }
+/* Apply a backdrop-filter to blur the background */
+.gen-ai-section::before {
+    content: ""; /* Create a pseudo-element to cover the background */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(2px); /* Adjust the blur value as needed */
+    z-index: 1; /* Place it behind the content */
+}
+
 .gen-ai-content a {
     color: #fff
 }
+
 .gen-ai-content {
     opacity: 0; /* Initially, hide the section */
     transition: opacity 0.5s ease; /* Add a transition effect for smooth visibility */
@@ -154,25 +161,27 @@ video {
     padding: 5vw 2.5rem;
     border-bottom: 2px solid #ffb600aa;
     border-top: 2px solid #ffb600aa;
-    z-index:100;
-    position:relative;
+    z-index: 100;
+    position: relative;
 }
 
-    .gen-ai-content h2,.ps-card h2{
+    .gen-ai-content h2, .ps-card h2 {
         font-size: 4vw;
         color: #ffb600;
         font-family: 'Anton', sansserif;
         font-weight: bold;
         text-shadow: 2px 2px 4px rgb(192 173 239 / 50%);
     }
+
     .gen-ai-content p {
         color: #fff;
-        text-align:justify;
+        text-align: justify;
     }
+
     .gen-ai-content img {
-        height:175px;
-        width:200px;
-        background-color:#fff;
+        height: 175px;
+        width: 200px;
+        background-color: #fff;
     }
 
     /* Make the GenAI section visible when it's in the viewport */
@@ -185,33 +194,38 @@ video {
 
 
 footer .row {
-    margin-left:0% !important;
-    margin-right:0% !important;
+    margin-left: 0% !important;
+    margin-right: 0% !important;
 }
-    footer a{
-        color:#fff !important;
-        text-decoration:none;
-    }
+
+footer a {
+    color: #fff !important;
+    text-decoration: none;
+}
 
 
 
-    /*GenAI Page Styles*/
+/*GenAI Page Styles*/
 .gen-ai-main-tools {
     background-image: url(../img/background/bg5.jpg);
 }
+
 .gen-ai-main-organizations {
     background-image: url(../img/background/bg6.jpg);
 }
+
 .gen-ai-main-applications {
     background-image: url(../img/background/bg7.jpg);
 }
-.gen-ai-main{
-    background-repeat:no-repeat;
-    background-size:cover;
-    min-height:120vh;
-    padding-bottom:2rem;
+
+.gen-ai-main {
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 120vh;
+    padding-bottom: 2rem;
 }
-.gen-ai-main h1 {
+
+    .gen-ai-main h1 {
         font-family: 'Anton', sansserif;
         background-image: linear-gradient(to right, brown, brown, yellow, white, yellow, brown, brown);
         -webkit-background-clip: text;
@@ -222,75 +236,86 @@ footer .row {
         text-align: center;
         font-size: 8vw;
     }
-.gen-ai-main .img-cont {
+
+    .gen-ai-main .img-cont {
         margin: 3px;
     }
-.gen-ai-main .img-cont img{
-        width: 175px;
-        height: 175px;
-        background-color:#fff;
-    }
+
+        .gen-ai-main .img-cont img {
+            width: 175px;
+            height: 175px;
+            background-color: #fff;
+        }
+
 .img-btns {
-    opacity:0;
+    opacity: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     position: absolute;
     top: 286px;
     height: 175px;
     width: 175px;
     background: #000000cc;
-    transition:500ms ease-in-out;
-}
-.img-btns:hover {
-        opacity:1;
-    }
-.img-btns h4{
-    width:100%;
-    border-bottom:2px solid goldenrod;
-}
-.img-btns button{
-    background:dodgerblue;
-    border:none;
-    color:#fff;
-    border-radius:5px;
-    padding:0.25rem 0.75rem;
+    transition: 500ms ease-in-out;
 }
 
+    .img-btns:hover {
+        opacity: 1;
+    }
+
+    .img-btns h4 {
+        width: 100%;
+        border-bottom: 2px solid goldenrod;
+    }
+
+    .img-btns button {
+        background: dodgerblue;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+        padding: 0.25rem 0.75rem;
+    }
+
 /* GenAI Page Details Card Styles*/
-.details-card{
-    margin-top:4rem;
-    background-color:#2c2c2c;
-    min-height:500px;
-    width:90%;
-    margin:2rem auto auto auto;
-    padding:4rem;
+.details-card {
+    margin-top: 4rem;
+    background-color: #2c2c2c;
+    min-height: 500px;
+    width: 90%;
+    margin: 2rem auto auto auto;
+    padding: 4rem;
 }
+
     .details-card h3 {
         -webkit-text-stroke-width: 1px;
         -webkit-text-stroke-color: #68589b99;
         color: #ffe000;
         font-weight: bold;
         border-bottom: 2px solid #ffe000cc;
-        padding-bottom:2px;
-        text-transform:uppercase;
+        padding-bottom: 2px;
+        text-transform: uppercase;
     }
-.details-card button{
-    background-color:dodgerblue;
-    color:#fff;
-    border-radius:2px;
-    padding:0.5rem 1rem;
-    border:none;
-    outline:none;
-    margin-bottom:1rem;
+
+    .details-card button {
+        background-color: dodgerblue;
+        color: #fff;
+        border-radius: 2px;
+        padding: 0.5rem 1rem;
+        border: none;
+        outline: none;
+        margin-bottom: 1rem;
+    }
+
+    .details-card p {
+        color: #acacac;
+    }
+
+.tool-logo-container {
+    margin-top: 3rem;
 }
-.details-card p{
-    color:#acacac;
-}
-.tool-logo-container{
-    margin-top:3rem;
-}
+
     .tool-logo-container a {
         background-color: #3d3d3d;
         color: #acacac;
@@ -300,22 +325,25 @@ footer .row {
         outline: none;
         margin-bottom: 1rem;
     }
+
     .tool-logo-container div {
         width: 100%;
-        border-radius:3px;
+        border-radius: 3px;
         margin-top: 1rem;
         background-color: #3c3c3c;
-        padding:1rem;
+        padding: 1rem;
     }
+
     .tool-logo-container img {
-        height:175px;
-        width:auto;
+        height: 175px;
+        width: auto;
     }
-py-script img{
-    padding:5px;
-    background-color:#fff;
-    margin:2px;
-    max-width:100%;
+
+py-script img {
+    padding: 5px;
+    background-color: #fff;
+    margin: 2px;
+    max-width: 100%;
 }
 /*Jobs Parallax*/
 .jobs-parallax {
@@ -328,73 +356,84 @@ py-script img{
     background-repeat: no-repeat;
     background-size: cover;
 }
-.jobs-parallax h1 {
-    font-family: 'Anton', sansserif;
-    background-image: linear-gradient(to right, brown, brown, yellow, white, yellow, brown, brown);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: brown;
-    padding: 2vw 2vw 0vw 2vw;
-    text-align: center;
-    font-size: 8vw;
+
+    .jobs-parallax h1 {
+        font-family: 'Anton', sansserif;
+        background-image: linear-gradient(to right, brown, brown, yellow, white, yellow, brown, brown);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: brown;
+        padding: 2vw 2vw 0vw 2vw;
+        text-align: center;
+        font-size: 8vw;
+    }
+
+#pyscript-operation-details * {
+    font-size: 14pt;
+    color: #fff;
 }
-#pyscript-operation-details *{
-    font-size:14pt;
-    color:#fff;
-}
+
 tbody, td, tfoot, th, thead, tr {
     border-width: 1px !important;
 }
-    /*pyscript table styles*/
-    #table table thead th {
-    background-color: navy;
-    color:yellow;
-    text-align: center;
-}
-#table{
-    overflow-x:scroll;
-}
-#table table {
-    width: 100%;
-    overflow-x: auto;
-    font-size: .875em;
-    --bs-table-bg: #fff;
-    --bs-table-accent-bg: #fff;
-    --bs-table-striped-color: #212529;
-    --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
-    --bs-table-active-color: #212529;
-    --bs-table-active-bg: rgba(0, 0, 0, 0.1);
-    --bs-table-hover-color: #212529;
-    --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
-    width: 100%;
-    margin-bottom: 1rem;
-    color: #212529;
-    vertical-align: top;
-    border-color: #dee2e6;
-    caption-side: bottom;
-    border-collapse: collapse;
-}
-#table table>thead {
-    vertical-align: bottom;
-}
-#table table > tbody {
-    vertical-align: inherit;
-}
-#table table > tbody > tr:nth-of-type(odd) {
-    --bs-table-accent-bg: var(--bs-table-striped-bg);
-    color: var(--bs-table-striped-color);
-}
-#table table tbody th{
+/*pyscript table styles*/
+#table table thead th {
     background-color: navy;
     color: yellow;
     text-align: center;
 }
-#table table > :not(caption) > * > * {
-    padding: 0.5rem 0.5rem;
-    background-color: var(--bs-table-bg);
-    border-bottom-width: 1px;
+
+#table {
+    overflow-x: scroll;
 }
+
+    #table table {
+        width: 100%;
+        overflow-x: auto;
+        font-size: .875em;
+        --bs-table-bg: #fff;
+        --bs-table-accent-bg: #fff;
+        --bs-table-striped-color: #212529;
+        --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+        --bs-table-active-color: #212529;
+        --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+        --bs-table-hover-color: #212529;
+        --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #212529;
+        vertical-align: top;
+        border-color: #dee2e6;
+        caption-side: bottom;
+        border-collapse: collapse;
+    }
+
+        #table table > thead {
+            vertical-align: bottom;
+        }
+
+        #table table > tbody {
+            vertical-align: inherit;
+        }
+
+            #table table > tbody > tr:nth-of-type(odd) {
+                --bs-table-accent-bg: var(--bs-table-striped-bg);
+                color: var(--bs-table-striped-color);
+            }
+
+        #table table tbody th {
+            background-color: navy;
+            color: yellow;
+            text-align: center;
+        }
+
+        #table table > :not(caption) > * > * {
+            padding: 0.5rem 0.5rem;
+            background-color: var(--bs-table-bg);
+            border-bottom-width: 1px;
+        }
+
 .ps-card {
     background-color: #1212d55e;
     padding: 1vw;
@@ -404,10 +443,11 @@ tbody, td, tfoot, th, thead, tr {
     align-items: center;
     justify-content: center;
 }
-.ps-card p {
-    font-style:italic;
-    color:#fff;
-}
+
+    .ps-card p {
+        font-style: italic;
+        color: #fff;
+    }
 
 .contact-us-container {
     background-image: url('/img/background/bg1.jpg');
@@ -417,6 +457,7 @@ tbody, td, tfoot, th, thead, tr {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
     .contact-us-container h1 {
         font-family: 'Anton', sansserif;
         background-image: linear-gradient(to right, brown, brown, yellow, white, yellow, brown, brown);
@@ -427,15 +468,18 @@ tbody, td, tfoot, th, thead, tr {
         font-size: 8vw;
         text-transform: uppercase;
     }
+
 .contact-card {
     background-color: #1212d55e;
     height: 100%;
     box-shadow: rgb(253 253 253) 10px 10px 0px 0px;
 }
+
     .contact-card a {
         color: #9ea5af;
-        font-size:13pt;
+        font-size: 13pt;
     }
+
     .contact-card h4 {
         font-size: 4vw;
         color: #ffb600;
@@ -443,6 +487,7 @@ tbody, td, tfoot, th, thead, tr {
         text-shadow: 2px 2px 4px rgb(192 173 239 / 50%);
         text-align: center;
     }
+
     .contact-card p {
         color: #fff;
         text-align: center;
@@ -456,12 +501,23 @@ tbody, td, tfoot, th, thead, tr {
     background-size: cover;
     min-height: 100vh;
 }
-.GenAIs-Section {
-    font-family: 'Anton', sansserif;
-    background-image: linear-gradient(to right, brown, brown, yellow, white, yellow, brown, brown);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    padding: 2vw 2vw 0vw 2vw;
-    text-align: center;
-    font-size: 8vw;
-}
+
+    .GenAIs-Section h1 {
+        font-family: 'Anton', sansserif;
+        background-image: linear-gradient(to right, brown, brown, yellow, white, yellow, brown, brown);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        padding: 2vw 2vw 0vw 2vw;
+        text-align: center;
+        font-size: 8vw;
+    }
+
+    .GenAIs-Section form {
+        max-width: 800px;
+        margin: 2rem auto
+    }
+
+        .GenAIs-Section form * {
+            margin:5px;
+            color:#fff;
+        }

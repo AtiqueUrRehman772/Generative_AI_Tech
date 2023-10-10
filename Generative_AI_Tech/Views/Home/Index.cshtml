@@ -96,18 +96,18 @@
 <section class="gen-ai-joblist">
     <div class="gen-ai-content">
         <h2 class="text-center">List of Generative AI Websites</h2>
-        @if (Model._current_user?.Email != "")
+        @if (Model?.Email != "")
         {
-            <a href="/GenAI/Create">Click here to add a new generative AI website.</a>
+            <a href="/GenAIs/Create">Click here to add a new generative AI website.</a>
         }
         else
         {
             <p class="text-center fs-4" id="login-link">Please <a href="#">Login</a> or <a href="#">Register</a> to add a new generative AI Website</p>
         }
         <div class="row">
-            @if (Model._current_user?.Email != "")
+            @if (Model?.Email != "")
             {
-                for (int i = 0; i < Model._current_user?.GenAiSites?.Count; i++)
+                for (int i = 0; i < Model?.GenAiSites?.Count; i++)
                 {
                     <div class="col-lg-2 col-sm-4">
                         <div class="site-card">
@@ -132,7 +132,7 @@
                     localStorage.setItem('loginStatus', params?.email);
                     $('.loginbtn').hide();
                     $('#profile-email').show();
-                    $('#login-link').html(`<a href="/GenAI/Create">Click here to add a new generative AI website.</a>`);
+                    $('#login-link').html(`<a href="/GenAIs/Create">Click here to add a new generative AI website.</a>`);
                     $('#logout-btn').show();
                 }
                 //else if (localemail != null && localemail != undefined) {

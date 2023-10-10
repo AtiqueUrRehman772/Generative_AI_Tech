@@ -1,4 +1,5 @@
 ﻿using Generative_AI_Tech.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic.FileIO;
 using Newtonsoft.Json;
@@ -32,7 +33,7 @@ namespace Generative_AI_Tech.Controllers
 
         public IActionResult Index()
         {
-            if(_current_user?.Email != "")
+            if (_current_user?.Email != "")
             {
                 _current_user.GenAiSites = GetAllSites();
             }
@@ -233,20 +234,33 @@ namespace Generative_AI_Tech.Controllers
             }
         }
 
-        public IActionResult AddNewWebsite(string site_name, string summary)
+        public async Task<IActionResult> AddNewWebsite(SiteModal model)
         {
             try
             {
-                string image_name = "";
+                if (ModelState.IsValid)
+                {
+                    if (model.ImageFile != null && model.ImageFile.Length > 0)
+                    {
+                        var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "img","uploads");
+                        var uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ImageFile.FileName;
+                        var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                        model.Image_Name = uniqueFileName;
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await model.ImageFile.CopyToAsync(stream);
+                        }
+                    }
+                }
                 SqlConnection con = new SqlConnection(_constr);
-                string query = "insert into tbl_genai (site_name,image_name,summary) values('" + site_name + "','" + image_name + "','" + summary + "')";
+                string query = "insert into tbl_genai (site_name,image_name,summary) values('" + model.Site_Name + "','" + model.Image_Name + "','" + model.Summary + "')";
+                con.Open();
                 SqlCommand command = new SqlCommand(query, con);
                 command.ExecuteNonQuery();
-                con.Open();
                 con.Close();
-                return View();
+                return RedirectToAction("Index", "Home");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return Ok(StatusCodes.Status404NotFound);
                 throw;
@@ -269,7 +283,7 @@ namespace Generative_AI_Tech.Controllers
                     {
                         Id = sdr["id"].ToString(),
                         Image_Name = sdr["image_name"].ToString(),
-                        SiteName = sdr["site_name"].ToString(),
+                        Site_Name = sdr["site_name"].ToString(),
                         Summary = sdr["summary"].ToString()
                     });
                 }
