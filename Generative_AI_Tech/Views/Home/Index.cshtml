@@ -110,7 +110,7 @@
                 for (int i = 0; i < Model?.GenAiSites?.Count; i++)
                 {
                     <div class="col-lg-2 col-sm-4">
-                        <div class="site-card" style="background-image:url(/img/uploads/@Model?.GenAiSites[i].Image_Name)" onclick="(()=>{window.location.href='/Home/GenAISites#@Model?.GenAiSites[i].Site_Name'})()"
+                        <div class="site-card" style="background-image:url(/img/uploads/@Model?.GenAiSites[i].Image_Name)!important" onclick="(()=>{window.location.href='/Home/GenAISites#@Model?.GenAiSites[i].Site_Name'})()"
                         onmouseover="(()=>{setTimeout(()=>{this.style.backgroundImage='unset';this.style.backgroundColor='lightgrey'},2000);})()"
                         onmouseleave="(()=>{this.style.backgroundImage='url(/img/uploads/@Model?.GenAiSites[i].Image_Name)';this.style.backgroundColor='transparent'})()">
                             @Model?.GenAiSites[i].Site_Name

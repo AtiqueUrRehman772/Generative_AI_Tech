@@ -1,0 +1,19 @@
+﻿<section class="GenAIs-Section">
+    <h1>Edit GenAI Website</h1>
+    <form action="/Home/UpdateWebsite" method="post" enctype="multipart/form-data">
+        <input type="text" hidden name="id" value="@Model.GenAiSites[0]?.Id" />
+        <div class="form-group">
+            <label>GenAI Name</label>
+            <input type="text" name="site_name" class="form-control text-dark" id="site_name" aria-describedby="site_name" placeholder="Site Name" value="@Model.GenAiSites[0]?.Site_Name">
+        </div>
+        <div class="form-group">
+            <label>Summary</label>
+            <textarea class="form-control text-dark" name="summary" id="summary" rows="5" cols="50">@Model.GenAiSites[0]?.Summary</textarea>
+        </div>
+        <div class="form-group">
+            <label>Upload Image file</label>
+            <input type="file" class="form-control text-dark" name="imageFile"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</section>

@@ -2,7 +2,8 @@
 
 }
 <section class="gen-ai-websites">
-    <h1>Generative AI Websites</h1>
+    <h1 class="mt-4 mb-4">Generative AI Websites</h1>
+    <p class="text-center mt-4 fs-4"><a href="/GenAIs/Create">Click here to add a new generative AI website.</a></p>
     <div class="container-fluid">
         @if (Model?.Email != null && Model?.Email != "")
         {
@@ -18,11 +19,11 @@
                             @Model?.GenAiSites[i].Summary
                         </p>
                         <div class="container d-flex">
-                            <button class="m-2 btn btn-primary">Like(0)</button>
+                            <a class="m-2 btn btn-primary" href="/Home/AddLike?Id=@Model?.GenAiSites[i].Id">Like(@Model?.GenAiSites[i].Likes)</a>
                             @if (Model?.Role == "admin")
                             {
-                                <button class="m-2 btn btn-success">Edit</button>
-                                <button class="m-2 btn btn-danger">Delete</button>
+                                <a class="m-2 btn btn-success" href="/GenAIs/Edit?Id=@Model?.GenAiSites[i].Id">Edit</a>
+                                <a class="m-2 btn btn-danger" href="/GenAIs/Delete?Id=@Model?.GenAiSites[i].Id">Delete</a>
                             }
                         </div>
                     </div>

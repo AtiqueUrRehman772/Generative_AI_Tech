@@ -589,3 +589,8 @@ tbody, td, tfoot, th, thead, tr {
     border-top:1px solid yellow;
     border-bottom:1px solid yellow;
 }
+.delete-section p {
+    color: yellow;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #68589b99;
+}

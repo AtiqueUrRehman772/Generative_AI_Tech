@@ -16,6 +16,7 @@ namespace Generative_AI_Tech.Controllers
         private readonly IConfiguration _config;
         private string _constr;
         private static UserModal _current_user = new UserModal();
+        private static List<string>likedWebsites = new List<string>();
 
         public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHostEnvironment, IConfiguration config)
         {
@@ -161,7 +162,6 @@ namespace Generative_AI_Tech.Controllers
                 throw;
             }
         }
-        [HttpGet]
         public List<string[]> ReadCsvFile()
         {
             string wwwrootPath = _webHostEnvironment.WebRootPath;
@@ -238,9 +238,10 @@ namespace Generative_AI_Tech.Controllers
         public string Logout()
         {
             _current_user.Email = null;
+            likedWebsites = new List<string>();
             return "done";
         }
-        public async Task<IActionResult> AddNewWebsite(SiteModal model)
+        public async Task<IActionResult> UpdateWebsite(SiteModal model)
         {
             try
             {
@@ -248,7 +249,7 @@ namespace Generative_AI_Tech.Controllers
                 {
                     if (model.ImageFile != null && model.ImageFile.Length > 0)
                     {
-                        var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "img","uploads");
+                        var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "img", "uploads");
                         var uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ImageFile.FileName;
                         var filePath = Path.Combine(uploadsFolder, uniqueFileName);
                         model.Image_Name = uniqueFileName;
@@ -259,13 +260,65 @@ namespace Generative_AI_Tech.Controllers
                     }
                 }
                 SqlConnection con = new SqlConnection(_constr);
-                string query = @"insert into tbl_genai (site_name,image_name,summary) values('" + model.Site_Name + "','" + model.Image_Name + "','" + model.Summary + "')";
-                
+                string query = @"update tbl_genai set site_name = '" + model.Site_Name + "'";
+                if (model.Image_Name != null && model.Image_Name.Trim() != "")
+                    query += ",image_name = '" + model.Image_Name + "',summary = '" + model.Summary + "' where id=" + model.Id;
                 con.Open();
                 SqlCommand command = new SqlCommand(query, con);
                 command.ExecuteNonQuery();
                 con.Close();
                 return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                return Ok(StatusCodes.Status404NotFound);
+                throw;
+            }
+        }
+        public async Task<IActionResult> AddNewWebsite(SiteModal model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (model.ImageFile != null && model.ImageFile.Length > 0)
+                    {
+                        var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "img", "uploads");
+                        var uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ImageFile.FileName;
+                        var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                        model.Image_Name = uniqueFileName;
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await model.ImageFile.CopyToAsync(stream);
+                        }
+                    }
+                }
+                SqlConnection con = new SqlConnection(_constr);
+                string query = @"insert into tbl_genai (site_name,image_name,summary,likes) values('" + model.Site_Name + "','" + model.Image_Name + "','" + model.Summary + "',0)";
+
+                con.Open();
+                SqlCommand command = new SqlCommand(query, con);
+                command.ExecuteNonQuery();
+                con.Close();
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                return Ok(StatusCodes.Status404NotFound);
+                throw;
+            }
+        }
+        public async Task<IActionResult> DeleteWebsite(string Id)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(_constr);
+                string query = "delete from tbl_genai where id=" + Id;
+                SqlCommand command = new SqlCommand(query, con);
+                con.Open();
+                command.ExecuteNonQuery();
+                con.Close();
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
@@ -291,7 +344,8 @@ namespace Generative_AI_Tech.Controllers
                         Id = sdr["id"].ToString(),
                         Image_Name = sdr["image_name"].ToString(),
                         Site_Name = sdr["site_name"].ToString(),
-                        Summary = sdr["summary"].ToString()
+                        Summary = sdr["summary"].ToString(),
+                        Likes = int.Parse(sdr["likes"].ToString() ?? "0")
                     });
                 }
                 con.Close();
@@ -299,6 +353,34 @@ namespace Generative_AI_Tech.Controllers
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
+        public IActionResult AddLike(string Id)
+        {
+            try
+            {
+                foreach (var item in likedWebsites)
+                {
+                    if(item.Trim() == Id.Trim())
+                        return RedirectToAction("GenAISites");
+                }
+                using (SqlConnection con = new(_constr))
+                {
+                    string query = "update tbl_genai set likes = likes + 1 where id = " + Id;
+                    using (SqlCommand com = new(query, con))
+                    {
+                        con.Open();
+                        com.ExecuteNonQuery();
+                        con.Close();
+                        likedWebsites.Add(Id);
+                    }
+                }
+                return RedirectToAction("GenAISites");
+            }
+            catch (Exception)
+            {
+                return NotFound();
                 throw;
             }
         }
